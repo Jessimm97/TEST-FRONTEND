@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 
 
 const Modall = (props) => {
- 
+
 
     var { value = [] } = useSelector((state) => state.info)
 
@@ -49,19 +49,28 @@ const Modall = (props) => {
 
 
         return (
-            <div className=" flex flex-col text-center items-center">
-                <label className="text-xl ark:text-gray-500 font-sans" for="tentacles">{value.navbar?.menu?.lang.title == "es" ? "Add Pepole" : "Agregar Personas"}</label>
-                <input className="" type="number" onChange={(e) => changeAddPerson(e)} value={number} name="tentacles" min="1" max="100" />
-                <label className="text-xl ark:text-gray-500 font-sans" for="tentacles">{value.navbar?.menu?.lang.title == "es" ? "Add Nights" : "Agregar Noches"}</label>
-                <input className="" type="number" onChange={(e) => changeAddNight(e)} value={numberNight} name="tentacles" min="1" max="100" />
-
+            <div className=" flex flex-col text-start items-center">
+                <div className="flex flex row p-3">
+                    <label className="text-xl ark:text-gray-500 text-blue-900 font-sans pr-5" for="tentacles">{value.navbar?.menu?.lang.title == "es" ? "Add Pepole" : "Agregar Personas"}</label>
+                    <input className="" type="number" onChange={(e) => changeAddPerson(e)} value={number} name="tentacles" min="1" max="100" />
+                </div>
+                <div className="flex flex row">
+                    <label className="text-xl ark:text-gray-500 text-blue-900 font-sans pr-5" for="tentacles">{value.navbar?.menu?.lang.title == "es" ? "Add Nights" : "Agregar Noches"}</label>
+                    <input className="" type="number" onChange={(e) => changeAddNight(e)} value={numberNight} name="tentacles" min="1" max="100" />
+                </div>
                 <div className="py-6">
-                    <p className="text-xl ark:text-gray-500 font-sans">{value.navbar?.menu?.lang.title == "es" ? "Nights" : "Noches"}   {numberNight}</p>
-                    <p className="text-xl ark:text-gray-500 font-sans">{value.navbar?.menu?.lang.title == "es" ? "Pepole" : "Personas"} {number} </p>
-                    <p className="text-xl ark:text-gray-500 font-sans">Total: {currencyFormatter(total)}</p>
+                    <div className="flex flex row">
+                        <p className="text-2xl text-blue-900 pr-5 font-sans">{value.navbar?.menu?.lang.title == "es" ? "Nights:   " : "Noches:   "}  </p> <p className=" text-2xl  ark:text-gray-500 font-sans"> {numberNight}</p>
+                    </div>
+                    <div className="flex flex row">
+                        <p className="text-2xl text-blue-900 pr-5 font-sans">{value.navbar?.menu?.lang.title == "es" ? "Pepole:  " : "Personas:   "} </p> <p className="text-2xl  ark:text-gray-500 font-sans"> {number}</p>
+                    </div>
+                    <div className="flex flex row">
+                        <p className="text-2xl text-blue-900 pr-5  font-sans">Total: </p> <p className="text-2xl  ark:text-gray-500 font-sans"> {currencyFormatter(total)}</p>
+                    </div>
                 </div>
 
-                <button className="className='border font-serif border-gray border-2 w-40 py-5 " onClick={() => setShowCode(true)}>Save</button>
+                <button className="className='border font-serif border-gray border-2 text-2xl w-40 py-5 " onClick={() => setShowCode(true)}>Save</button>
             </div>
         )
 
@@ -93,7 +102,7 @@ const Modall = (props) => {
                                     </button>
                                 </div>
                                 <div className="relative p-6 flex-auto">
-                                    {value.navbar?.menu?.lang.title == "es" ? <div className="text-2xl p-5"> This is your code of reservation</div> : <div className="text-2xl p-5"> Este es tu código de reservación </div>}
+                                    {value.navbar?.menu?.lang.title == "es" ? <div className="text-4xl p-5 "> This is your code of reservation</div> : <div className="text-4xl text-cyan-900 p-5"> Este es tu código de reservación </div>}
                                     {addPersons()}
                                     {showCode == false ? " " : codeGenerator()}
                                 </div>

@@ -1,13 +1,14 @@
 
 
 import { isMobile,} from "react-device-detect"
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getInfoXcaret, getInfoXcaretEN } from '../src/reducers/thunks'
 
 
 const Nav = () => {
 
+  const [lengage,setLenguage] =useState(true)
 
   const dispatch = useDispatch();
   var { value = [] } = useSelector((state) => state.info)
@@ -17,7 +18,16 @@ const Nav = () => {
     dispatch(getInfoXcaret())
   }, [])
 
-
+//Función para modificar el idioma según se desee 
+  const changeLenguage=()=>{
+    setLenguage(!lengage)
+   
+    if(lengage==true){
+      dispatch(getInfoXcaret())
+    }if(lengage==false){
+      dispatch(getInfoXcaretEN())
+    }
+  }
   function renderContent() {
     if (isMobile) {
 
@@ -29,7 +39,7 @@ const Nav = () => {
         </div>
         <div className='flex ml-20'>
           <a className='text-xs p-2' href="#">   {value.navbar?.menu?.contact}</a>
-          <button className=' text-xs p-2' onClick={()=> dispatch(getInfoXcaretEN()) }>   {value.navbar?.menu?.lang.title}</button>
+          <button className=' text-xs p-2' onClick={()=> changeLenguage() }>   {value.navbar?.menu?.lang.title}</button>
           <select className=" p-2 border-gray-50 text-xs">
             {value.navbar?.menu?.currency.map((options, index) => (
               <option  className='text-xs' key={index}>{options} </option>
@@ -47,7 +57,7 @@ const Nav = () => {
        </div>
        <div className='hidden w-full lg:block lg:w-auto md:block md:w-auto'>
          <a className='p-4' href="#">   {value.navbar?.menu?.contact}</a>
-         <button className='p-4' onClick={()=>  dispatch(getInfoXcaret()) }>   {value.navbar?.menu?.lang.title}</button>
+         <button className='p-4' onClick={()=> changeLenguage() }>   {value.navbar?.menu?.lang.title}</button>
          <select className=" border-gray-50 w-20 p-1">
            {value.navbar?.menu?.currency.map((options, index) => (
              <option key={index}>{options} </option>
