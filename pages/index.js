@@ -2,8 +2,6 @@
 import 'tailwindcss/tailwind.css'
 import { store } from '../src/store'
 import { Provider } from 'react-redux'
-
-import PreFooter from '../components/preFooter'
 import Footer from '../components/footer'
 import dynamic from 'next/dynamic'
 
@@ -11,6 +9,7 @@ import dynamic from 'next/dynamic'
 const Header = dynamic(() => import('../components/Header'),{ ssr: false })
 const Body = dynamic(() => import('../components/Body'), { ssr: false })
 const Nav = dynamic(() => import('../components/Nav'), { ssr: false })
+const PreFooter = dynamic(() => import('../components/preFooter'), { ssr: false })
 
 
 export default function Home() {
