@@ -1,0 +1,10 @@
+/* ./styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.mobileDisign{
+    
+    margin-top: -80px;
+    position: absolute;
+}
