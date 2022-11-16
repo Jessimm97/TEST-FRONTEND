@@ -12,7 +12,5 @@ Para ejecutar el proyecto utilizar:  npm run dev
 
 Notas:
 
-Los componentes no se renderizan automaticamente, por lo que se debe de recargar el sitio en caso de visualizarse desde el inspeccionador.
-
-
-
+Los componentes no se renderizan automaticamente, por lo que se debe de recargar el sitio en caso de visualizarse desde el inspeccionador
+en Mobile y Desktop, esto por la librería react-device-detec.
